@@ -37,10 +37,14 @@ async def read_movies(
 
     # Generate pagination links
     base_url = "/api/v1/theater/movies/"
-    prev_page = f"{base_url}?page={page - 1}&per_page={per_page}" \
+    prev_page = (
+        f"{base_url}?page={page - 1}&per_page={per_page}"
         if page > 1 else None
-    next_page = f"{base_url}?page={page + 1}&per_page={per_page}" \
+    )
+    next_page = (
+        f"{base_url}?page={page + 1}&per_page={per_page}"
         if page < total_pages else None
+    )
 
     # Return the response with pagination metadata
     return {
